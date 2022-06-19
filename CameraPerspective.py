@@ -4,6 +4,9 @@ from math import *
 class Camera:
     def __init__(self):
         self.cam_position = Vector3([-10.0, 30.0, 40.0])
+        self.cam_front = None
+        self.cam_right = None
+        self.cam_up = None
         self.mouse_sensitivity = 0.15
         self.yaw = -90
         self.pitch = 0
@@ -30,7 +33,7 @@ class Camera:
             sin(radians(self.yaw)) * cos(radians(self.pitch))
         ])
 
-        self.cam_front = vector.normalise(front)   #try to change something here
+        self.cam_front = vector.normalise(front)
         self.cam_right = vector.normalise(vector3.cross(self.cam_front, Vector3([0.0, 1.0, 0.0])))
         self.cam_up = vector.normalise(vector3.cross(self.cam_right, self.cam_front))
 
